@@ -13,6 +13,10 @@ class SolutionTest {
 
   @Test
   void minSubArrayLen() {
+    assertThat(solution.minSubArrayLen(new int[]{}, 7))
+        .as("empty array")
+        .isEqualTo(0);
+
     assertThat(solution.minSubArrayLen(new int[]{7, 3, 1, 2, 4, 3}, 7))
         .as("first element == target")
         .isEqualTo(1);

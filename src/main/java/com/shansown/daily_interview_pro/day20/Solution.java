@@ -9,20 +9,20 @@ public class Solution {
     var left = 0;
     var right = 0;
     var length = 0;
-    var sum = nums[left];
+    var result = 0;
+    var sum = 0;
 
-    while (right < nums.length && left <= right) {
-      if (sum < target) {
-        if (++right < nums.length) {
-          sum += nums[right];
-        }
-      } else {
-        final var foundLength = right - left + 1;
-        length = length == 0 ? foundLength : Math.min(length, foundLength);
-        sum -= nums[left];
-        left++;
+    while (right < nums.length) {
+      while (sum < target && right < nums.length) {
+        sum += nums[right++];
+        length++;
+      }
+      while (sum >= target && left < nums.length) {
+        result = result == 0 ? length : Math.min(result, length);
+        sum -= nums[left++];
+        length--;
       }
     }
-    return length;
+    return result;
   }
 }
