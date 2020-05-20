@@ -15,7 +15,13 @@ class SolutionTest {
   void check() {
     assertThat(solution.check(new int[]{}))
         .isTrue();
-    assertThat(solution.check(new int[]{1, 1, 1}))
+    assertThat(solution.check(new int[]{3}))
+        .isTrue();
+    assertThat(solution.check(new int[]{2, 3, 3, 2, 4}))
+        .isTrue();
+    assertThat(solution.check(new int[]{3, 4, 2, 3}))
+        .isFalse();
+    assertThat(solution.check(new int[]{-1, 4, 2, 3}))
         .isTrue();
     assertThat(solution.check(new int[]{1, 2, 3}))
         .isTrue();
@@ -23,7 +29,6 @@ class SolutionTest {
         .isTrue();
     assertThat(solution.check(new int[]{3, 2, 1}))
         .isFalse();
-
     assertThat(solution.check(new int[]{13, 4, 7}))
         .isTrue();
     assertThat(solution.check(new int[]{5, 1, 3, 2, 5}))

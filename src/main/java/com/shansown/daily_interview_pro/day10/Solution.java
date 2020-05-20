@@ -9,19 +9,22 @@ public class Solution {
     var modified = false;
 
     for (var i = 0; i < arr.length - 1; i++) {
+      var prev = i == 0 ? Integer.MIN_VALUE : arr[i - 1];
       var curr = arr[i];
       var next = arr[i + 1];
 
-      if (curr > next) {
-        var canBeModified = (i == 0 || arr[i -1] <= next) && !modified;
-        if (!canBeModified) {
+      if (curr > next) { // modification required
+        if (modified) {
           return false;
+        }
+        if (i == 0 || next >= prev) {
+          arr[i] = next; // update current
+        } else {
+          arr[i + 1] = curr; // update next
         }
         modified = true;
       }
     }
-
     return true;
   }
-
 }
